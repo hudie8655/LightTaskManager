@@ -1,44 +1,5 @@
 package com.home.liyun.process;
 
-import android.os.Bundle;
-import android.app.Activity;
-import android.view.Menu;
-
-public class TaskActivity extends Activity {
-
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_task);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_task, menu);
-		return true;
-	}
-
-}
-
-package com.home.liyun;
-
-
-/**
- * ActivityManager.RunningAppProcessInfo {
- *     public int importance                // 进程在系统中的重要级别
- *     public int importanceReasonCode        // 进程的重要原因代码
- *     public ComponentName importanceReasonComponent    // 进程中组件的描述信息
- *     public int importanceReasonPid        // 当前进程的子进程Id
- *     public int lru                        // 在同一个重要级别内的附加排序值
- *     public int pid                        // 当前进程Id
- *     public String[] pkgList                // 被载入当前进程的所有包名
- *     public String processName            // 当前进程的名称
- *     public int uid                        // 当前进程的用户Id
- * }
- */
-
-//import crazypebble.sysassist.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -59,7 +20,7 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class EnumProcessActivity extends ListActivity {
+public class TaskActivity extends ListActivity {
     
     private static List<RunningAppProcessInfo> procList = null;
     
@@ -119,7 +80,7 @@ public class EnumProcessActivity extends ListActivity {
 				 //arg0.getAdapter().getItem(2).
 				//int pid = Integer.parseInt(((TextView)arg1.findViewById(R.id.proc_id)).getText().toString());
 				String packname = ((TextView)arg1.findViewById(R.id.proc_name)).getText().toString();
-				Toast.makeText(EnumProcessActivity.this, "Killing"+ ((TextView)arg1.findViewById(R.id.proc_id)).getText(), Toast.LENGTH_LONG).show(); 
+				Toast.makeText(TaskActivity.this, "Killing"+ ((TextView)arg1.findViewById(R.id.proc_id)).getText(), Toast.LENGTH_LONG).show(); 
 				//android.os.Process.killProcess(pid);
 				ActivityManager activityManager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
 				activityManager.killBackgroundProcesses(packname);
